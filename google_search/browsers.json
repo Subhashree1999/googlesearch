@@ -1,0 +1,39 @@
+{
+  "firefox": {
+    "default": "latest",
+    "versions": {
+      "latest": {
+        "image": "selenoid/firefox",
+        "port": "4444",
+        "path": "/wd/hub",
+        "tmpfs": {
+          "/tmp": "size=512m"
+        }
+      }
+    }
+  },
+  "chrome": {
+    "default": "latest",
+    "versions": {
+      "latest": {
+        "image": "selenoid/chrome",
+        "port": "4444",
+        "tmpfs": {
+          "/tmp": "size=512m",
+          "/video": "size=100m"
+        },
+        "selenoid:options": {
+          "enableVNC": true,
+          "enableVideo": true,
+          "videoName": "chrome-${BROWSER_NAME}-${TEST_NAME}-${START_TIME}",
+          "videoScreenSize": "1280x1024"
+        },
+        "enableVNC": true,
+        "enableVideo": true,
+        "videoName": "chrome-${BROWSER_NAME}-${TEST_NAME}-${START_TIME}",
+        "videoScreenSize": "1280x1024"
+      }
+    }
+  }
+}
+
