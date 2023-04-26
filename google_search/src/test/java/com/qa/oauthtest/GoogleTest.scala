@@ -1,6 +1,6 @@
 package com.qa.oauthtest
 
-import com.codeborne.selenide.Selenide.{$, closeWebDriver, closeWindow, open}
+import com.codeborne.selenide.Selenide.{$, $$, closeWebDriver, closeWindow, open}
 import com.codeborne.selenide.logevents.SelenideLogger
 import com.codeborne.selenide.testng.{ScreenShooter, TextReport}
 import com.codeborne.selenide.{Condition, Configuration, WebDriverRunner}
@@ -17,6 +17,7 @@ import org.testng.annotations._
 
 import java.net.URL
 import java.util.logging.Level
+import scala.Console.println
 
 @Listeners(Array(classOf[TextReport], classOf[ScreenShooter]))
 class GoogleTest {
@@ -47,8 +48,10 @@ class GoogleTest {
     $(By.name("q")).setValue("Think Talent")
     $(By.name("btnK")).click()
     $(By.id("logo")).shouldHave(Condition.appear)
-   val header =  $(By.xpath("//<h3[text()='Think Talent Services: Home']")).getText()
-  //  Assert.assertEquals(header,"Think Talent Services: Home")
+   val header =  $(By.xpath("//h3[text()='Think Talent Services: Home']")).getText()
+    println(header)
+    Assert.assertEquals(header,"Think Talent Services: Home")
+     //headercount=$$("LC20lb MBeuO DKV0Md").size()
   }
 
 
@@ -58,3 +61,4 @@ class GoogleTest {
   }
 
 }
+
